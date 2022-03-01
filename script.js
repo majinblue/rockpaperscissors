@@ -7,19 +7,18 @@ function computerPlay () {
 
 // Create a function that plays a single round of Rock Paper Scissors
 // It should take in playerSelection and computerSelection as parameters and return a string that declares the winner
-
 function playRound (playerSelection, computerSelection) {
     // Creating a helper function to declare the winner
     function declareWinner (playerSelection, computerSelection) {
-        return console.log(`You win! ${playerSelection} beats ${computerSelection}`)
+        return `You win! ${playerSelection} beats ${computerSelection}`
     }
-
+    // Creating a helper function to declare the loser
     function declareLoser (playerSelection, computerSelection) {
-        return console.log(`You lose! ${computerSelection} beats ${playerSelection}`)
+        return `You lose! ${computerSelection} beats ${playerSelection}`
     }
-
+    // Creating a helper function to declare a draw!
     function declareDraw () {
-        return console.log(`It's a draw!`)
+        return `It's a draw!`
     }
 
     // Making the user's input case insensitive by turning their input lowercase regardless of how they typed it!
@@ -29,35 +28,42 @@ function playRound (playerSelection, computerSelection) {
         // If the player chooses rock...
         case 'rock':
             if (computerSelection === playerSelection) {
-                declareDraw();
+                return declareDraw();
             } else if (computerSelection === 'paper') {
-                declareLoser(playerSelection, computerSelection);
+                return declareLoser(playerSelection, computerSelection);
             } else {
-                declareWinner(playerSelection, computerSelection);
+                return declareWinner(playerSelection, computerSelection);
             }
             break;
         // If the player chooses paper...
         case 'paper':
             if (computerSelection === playerSelection) {
-                declareDraw();
+                return declareDraw();
             } else if (computerSelection === 'scissors') {
-                declareLoser(playerSelection, computerSelection);
+                return declareLoser(playerSelection, computerSelection);
             } else {
-                declareWinner(playerSelection, computerSelection);
+                return declareWinner(playerSelection, computerSelection);
             }
             break;
         // If the player chooses scissors...
         case 'scissors':
             if (computerSelection === playerSelection) {
-                declareDraw();
+                return declareDraw();
             } else if (computerSelection === 'rock') {
-                declareLoser(playerSelection, computerSelection)
+                return declareLoser(playerSelection, computerSelection)
             } else {
-                declareWinner(playerSelection, computerSelection)
+                return declareWinner(playerSelection, computerSelection)
             }
-            break;
     }
 }
 
-const playerSelection = 'paper'
-playRound(playerSelection, computerPlay())
+
+
+function game() {
+    for (let i = 0; i<5; i++) {
+        let playerSelection = prompt('Please type one of the following options: rock, paper, or scissors', 'rock');
+        console.log(playRound(playerSelection, computerPlay()))
+    }
+}
+
+game();
